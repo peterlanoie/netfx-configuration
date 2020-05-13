@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense" elementFormDefault="qualified" attributeFormDefault="unqualified" vs:helpNamespace="http://schemas.microsoft.com/.NetConfiguration/v2.0">
+	<xs:include schemaLocation="C:\Program Files\Microsoft Visual Studio 9.0\xml\Schemas\DotNetConfig.xsd"/>
+	<xs:element name="deploymentLocations">
+		<xs:annotation>
+			<xs:documentation>DeploymentLocationsSection</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="add" vs:help="configuration/appSettings/add">
+					<xs:annotation>
+						<xs:documentation>DeploymentLocationSettings</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element ref="hosts" minOccurs="0"/>
+							<xs:element ref="appSettings" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>AppSettingsSection</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="connectionStrings" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>ConnectionStringsSection</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:all>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="remove" vs:help="configuration/appSettings/remove">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="clear" vs:help="configuration/appSettings/clear">
+					<xs:complexType>
+						<!--tag is empty-->
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:attribute name="defaultLocation">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="hosts">
+		<xs:annotation>
+			<xs:documentation>DeploymentLocationHostCollection</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="add" vs:help="configuration/appSettings/add">
+					<xs:annotation>
+						<xs:documentation>DeploymentLocationHost</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="remove" vs:help="configuration/appSettings/remove">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="clear" vs:help="configuration/appSettings/clear">
+					<xs:complexType>
+						<!--tag is empty-->
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
